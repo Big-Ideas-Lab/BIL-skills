@@ -14,7 +14,11 @@ python3 -m http.server 8000
 # then open http://localhost:8000/design-system/index.html
 ```
 
-A public live link is pending Duke brand review: the catalog bundles institutional marks, and publication of those marks needs approval. See [`TRADEMARKS.md`](./TRADEMARKS.md).
+Live link, anyone with the URL:
+
+https://eager-medley-qd25.here.now/
+
+That is a static review copy of `design-system/` plus `slide-templates/`, and the URL is stable — later revisions update the same Site. Repository inclusion of the bundled BIL and Duke/BIL marks is not trademark approval; see [`TRADEMARKS.md`](./TRADEMARKS.md).
 
 ## Included skills
 

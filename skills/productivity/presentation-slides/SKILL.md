@@ -40,6 +40,7 @@ The final medium is HTML. Do not create PowerPoint/PPTX files or use PowerPoint-
 ## Source of truth
 
 - `design-system/index.html`: the canonical catalog; the other two HTML files are redirect fallbacks.
+- Live review copy: https://eager-medley-qd25.here.now/ — a static publish of `design-system/` plus `slide-templates/`, shareable with anyone holding the URL. Regenerate it from a clean staging tree that contains both directories, because the catalog reaches the templates through `../slide-templates/`.
 - `design-system/tokens.css`, `tokens.json`, and `DESIGN.md`: canonical recovered sources.
 - `slide-templates/bil-lab-presentation-template.html`: reusable fixed-stage template.
 - `slide-templates/template-manifest.json`: machine-readable slide contract.
