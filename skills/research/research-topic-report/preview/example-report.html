@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGM-derived glucose excursion phenotype as a cardiometabolic risk signal</title>
+<style>
+/* BIL research topic report — report layout layer over BIG IDEAs Lab tokens.
+   Embedded verbatim into the rendered report; no external requests. */
+
+:root {
+  --blue-900: #012169;
+  --blue-800: #003A70;
+  --blue-700: #00539B;
+  --blue-100: #E8F1FA;
+  --blue-050: #F4F8FC;
+  --white: #FFFFFF;
+  --ink-950: #111318;
+  --ink-700: #3F4650;
+  --ink-500: #68717D;
+  --gray-200: #D9DEE5;
+  --gray-100: #EDF0F4;
+  --gray-050: #F7F8FA;
+
+  --background: var(--white);
+  --surface: var(--gray-050);
+  --surface-accent: var(--blue-050);
+  --text-primary: var(--ink-950);
+  --text-secondary: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --border: var(--gray-200);
+  --primary: var(--blue-900);
+  --primary-hover: var(--blue-800);
+  --focus: var(--blue-700);
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --step-1: 8px;  --step-2: 16px; --step-3: 24px;
+  --step-4: 32px; --step-5: 48px; --step-6: 72px;
+  --shell: 1080px;
+  --pad: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+.report { max-width: var(--shell); margin: 0 auto; padding: 0 var(--pad) var(--step-6); }
+
+a { color: var(--blue-800); }
+a:hover { color: var(--primary); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.masthead { padding: var(--step-5) 0 var(--step-4); border-bottom: 1px solid var(--border); }
+.masthead h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--step-2);
+  max-width: 46ch;
+}
+.topic-statement { font-size: 18px; color: var(--text-secondary); margin: 0 0 var(--step-3); max-width: 68ch; }
+
+.meta-row { display: flex; flex-wrap: wrap; gap: var(--step-2); align-items: center; font-size: 13px; color: var(--text-muted); }
+.meta-row dl { display: flex; flex-wrap: wrap; gap: var(--step-3); margin: 0; }
+.meta-row dt { font-weight: 600; color: var(--text-secondary); }
+.meta-row dd { margin: 0; font-family: var(--font-mono); }
+
+.lane-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-accent);
+  color: var(--primary);
+}
+
+/* The nav box stays inside the shell (so it never widens the document) while a
+   full-bleed band is painted behind it by a pseudo-element. */
+.section-nav {
+  position: sticky; top: 0; z-index: 5;
+  margin: 0 0 var(--step-4);
+  padding: var(--step-1) 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: transparent;
+}
+.section-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+  z-index: -1;
+}
+.section-nav ul { display: flex; gap: var(--step-3); list-style: none; margin: 0; padding: 0; }
+.section-nav a { font-size: 13px; text-decoration: none; color: var(--text-secondary); }
+.section-nav a:hover { color: var(--primary); text-decoration: underline; }
+/* Active-section marker, set by the optional scroll-spy script. Without
+   JavaScript every item simply stays unmarked; the nav still works. */
+.section-nav a[aria-current="true"] { color: var(--primary); font-weight: 600; text-decoration: underline; }
+.section-nav .nav-index { font-family: var(--font-mono); color: var(--text-muted); margin-right: 6px; }
+.section-nav a[aria-current="true"] .nav-index { color: var(--primary); }
+
+.section { padding: var(--step-5) 0 0; }
+.section > h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 var(--step-3);
+  padding-bottom: var(--step-1);
+  border-bottom: 1px solid var(--border);
+}
+.section h3 { font-family: var(--font-sans); font-size: 17px; font-weight: 600; margin: var(--step-3) 0 var(--step-1); }
+.section p, .section li { max-width: 74ch; }
+.section ul, .section ol { padding-left: var(--step-3); }
+
+.lede { font-size: 17px; color: var(--text-secondary); }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 16px; margin: var(--step-3) 0; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+caption { text-align: left; padding: var(--step-2); font-size: 13px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); min-width: 96px; }
+thead th { position: sticky; top: 0; background: var(--surface); font-weight: 600; color: var(--text-secondary); }
+tbody tr:last-child td { border-bottom: 0; }
+td.mono, th.mono, .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 12.5px; }
+
+/* A flowing grid keeps card order row-wise and every card in a row top-aligned
+   and equal in width. An odd card count leaves one empty cell in the last row,
+   which reads as intentional; balanced multi-column flow instead drops the odd
+   card to a much shorter second column and looks unfinished. */
+.hypotheses { display: grid; grid-template-columns: 1fr; gap: var(--step-3); margin: var(--step-3) 0; }
+@media (min-width: 900px) { .hypotheses { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.hypothesis {
+  break-inside: avoid; page-break-inside: avoid;
+  margin: 0 0 var(--step-3);
+  border: 1px solid var(--border); border-radius: 16px; padding: var(--step-3); background: var(--white);
+}
+.hypothesis h3 { margin: 0 0 6px; font-size: 16px; }
+.hypothesis .claim { margin: 0 0 var(--step-2); color: var(--text-primary); }
+.hypothesis .id { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 var(--step-2); list-style: none; padding: 0; }
+.chip {
+  display: inline-flex; align-items: baseline; gap: 5px;
+  flex: 0 0 auto; white-space: nowrap;
+  font-size: 12px; padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+}
+.chip .chip-label { font-weight: 600; }
+.chip .chip-value { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.chip[data-value="High"] { background: var(--blue-050); border-color: var(--blue-100); color: var(--primary); }
+.chip[data-value="Low"] { background: var(--gray-100); }
+.chip[data-kind="state"] { background: var(--white); }
+
+details { border-top: 1px solid var(--border); padding-top: var(--step-2); }
+summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--blue-800); min-height: 44px; display: flex; align-items: center; gap: 6px; }
+summary::marker { color: var(--text-muted); }
+details > dl { margin: var(--step-2) 0 0; font-size: 13px; }
+details dt { font-weight: 600; color: var(--text-secondary); margin-top: var(--step-2); }
+details dd { margin: 2px 0 0; color: var(--text-primary); max-width: 74ch; }
+
+.callout { border-left: 4px solid var(--focus); background: var(--surface-accent); padding: var(--step-2) var(--step-3); border-radius: 0 8px 8px 0; margin: var(--step-3) 0; }
+.callout h3 { margin-top: 0; }
+.callout ul { margin: 0; }
+
+.skeptic-group { margin: var(--step-3) 0; }
+.skeptic-group h3 { display: flex; align-items: center; gap: var(--step-1); }
+.independence { font-family: var(--font-mono); font-size: 12px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; background: var(--white); color: var(--text-secondary); text-transform: none; letter-spacing: 0; }
+
+.empty { color: var(--text-muted); font-style: italic; }
+
+.report-footer { border-top: 1px solid var(--border); margin-top: var(--step-5); padding-top: var(--step-3); font-size: 13px; color: var(--text-muted); }
+.report-footer .neutrality { color: var(--text-secondary); font-weight: 600; max-width: 74ch; }
+
+@media (max-width: 640px) {
+  :root { --pad: 20px; }
+  .masthead h1 { font-size: 30px; }
+  .section > h2 { font-size: 23px; }
+  .section p, .section li { max-width: none; }
+}
+
+@media print {
+  body { font-size: 11pt; }
+  .section-nav { display: none; }
+  .section { break-inside: avoid; page-break-inside: avoid; padding-top: 24pt; }
+  details { border-top: 0; }
+  details > dl { display: block !important; }
+  summary { display: none; }
+  a { color: #000; text-decoration: none; }
+  .table-wrap { overflow: visible; border-color: #000; }
+  th, td { border-color: #000; }
+  .hypotheses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+</style>
+</head>
+<body>
+<header class="masthead">
+<h1>CGM-derived glucose excursion phenotype as a cardiometabolic risk signal</h1>
+<p class="topic-statement">Assess which glucose-excursion-derived phenotypes could support a defensible cardiometabolic risk signal, and lay out the trade-offs between candidate hypotheses before the group commits effort.</p>
+<div class="meta-row"><span class="lane-badge">decision-grade lane</span><dl><dt>Lane</dt><dd>decision-grade</dd><dt>Topic ID</dt><dd>cgm-excursion-phenotype</dd><dt>Built</dt><dd>2026-09-29</dd></dl></div>
+</header>
+<nav class="section-nav" aria-label="Report sections"><ul><li><a href="#scope"><span class="nav-index">01</span>Topic and scope</a></li><li><a href="#evidence"><span class="nav-index">02</span>Evidence brief</a></li><li><a href="#evidence-table"><span class="nav-index">03</span>Evidence table</a></li><li><a href="#claim-map"><span class="nav-index">04</span>Claim-to-source map</a></li><li><a href="#hypotheses"><span class="nav-index">05</span>Hypothesis portfolio</a></li><li><a href="#matrix"><span class="nav-index">06</span>Risk–impact matrix</a></li><li><a href="#falsifiers"><span class="nav-index">07</span>Falsifiers and minimum evidence</a></li><li><a href="#open"><span class="nav-index">08</span>Unresolved questions and disagreements</a></li><li><a href="#skeptic"><span class="nav-index">09</span>Skeptic pass</a></li></ul></nav>
+<main>
+<section class="section" id="scope"><h2><span class="nav-index">01</span> Topic and scope</h2><p>Research direction (fixed input): derive interpretable glucose-excursion phenotypes from continuous glucose monitoring and test whether they carry incremental cardiometabolic information beyond established summary metrics.</p><p>In scope: excursion detection and characterization from CGM-only input; within-person and between-person comparisons where the design supports them; explicit measurement validation before outcome association.</p><p>Out of scope: causal claims about diet or clinical events without reference labels; device-level algorithmic claims; and any advocation of a single direction.</p><ul><li>Inferential boundary: an algorithm-defined excursion is not a meal, exposure, diagnosis, or response until reference evidence supports the attribution.</li><li>Access boundary: controlled-data analyses and external outreach are separate authorizations from this report.</li></ul></section><section class="section" id="evidence"><h2><span class="nav-index">02</span> Evidence brief</h2><p>Existing work establishes that CGM-derived variability summaries associate with cardiometabolic outcomes, while excursion-level phenotyping remains less standardized and largely unvalidated against reference labels.</p><ul><li>Established: sensor-derived variability summaries and time-in-range metrics have reproducible associations with glycaemic control.</li><li>Contested: whether excursion shape and timing add information beyond those summaries, and how much of that signal is measurement artifact.</li><li>Gap: reference-labelled datasets that let an excursion detector be validated before it is used as a phenotype.</li></ul><div class="callout"><h3>Known limitation</h3><ul><li>Full text for two sources remains awaiting_full_text; no claim in this report depends on them.</li><li>One included conference abstract supports discovery only and is not used to verify any claim.</li></ul></div></section><section class="section" id="evidence-table"><h2><span class="nav-index">03</span> Evidence table</h2><div class="table-wrap"><table><caption>Included sources, discovery route, verification state, and comparability stratum.</caption><thead><tr><th scope="col" class="mono">Source</th><th scope="col">Discovery route</th><th scope="col">Verification</th><th scope="col">Comparison stratum</th><th scope="col">Limitation</th></tr></thead><tbody><tr><td class="mono">S1</td><td>Consensus MCP + Independent</td><td>full-text verified</td><td>adult CGM cohort / person-level split</td><td>Reference standard is self-report; excursion attribution unsupported.</td></tr><tr><td class="mono">S2</td><td>Consensus MCP + Reference chaining</td><td>full-text verified</td><td>adult CGM cohort / person-level split</td><td>Metrics reported on a different event unit than S1; not comparable.</td></tr><tr><td class="mono">S3</td><td>Consensus MCP</td><td>awaiting_full_text</td><td>not comparable</td><td>Discovery candidate only; excluded from verification.</td></tr></tbody></table></div></section><section class="section" id="claim-map"><h2><span class="nav-index">04</span> Claim-to-source map</h2><div class="table-wrap"><table><caption>Every decision-relevant claim with its locator, epistemic status, and verification state.</caption><thead><tr><th scope="col">Claim</th><th scope="col" class="mono">Source</th><th scope="col" class="mono">Locator</th><th scope="col">Status</th><th scope="col">Verification</th></tr></thead><tbody><tr><td>Variability summaries associate with glycaemic control in adults.</td><td class="mono">S1</td><td class="mono">Results, primary model, Table 2</td><td>evidence</td><td>verified</td></tr><tr><td>Excursion timing adds information beyond variability summaries.</td><td class="mono">S2</td><td class="mono">Discussion, paragraph 3</td><td>synthesis</td><td>verified (source is hypothesis-generating, not confirmatory)</td></tr><tr><td>Excursion shape is a validated proxy for postprandial response.</td><td class="mono">—</td><td class="mono">—</td><td>speculation</td><td>unsupported — no locator</td></tr></tbody></table></div></section><section class="section" id="hypotheses"><h2><span class="nav-index">05</span> Hypothesis portfolio</h2><p>Chip legend: Sci. risk = scientific risk, Exec. risk = execution risk, Time = time to evidence, Impact = potential impact. Scientific and execution risk read higher-is-riskier; time reads lower-is-faster; impact reads higher-is-better. The four axes stay separate and no composite score is computed.</p><div class="hypotheses"><article class="hypothesis"><p class="id">H1 · focal</p><h3>Excursion timing carries incremental within-person information</h3><p class="claim">Excursion timing features predict next-window glycaemic state better than variability summaries alone.</p><ul class="chips"><li class="chip" data-value="Moderate" title="Scientific risk: Moderate (higher is riskier). Within-person signal is plausible; confounding by sensor wear pattern is unresolved."><span class="chip-label">Sci. risk</span><span class="chip-value">Moderate</span></li><li class="chip" data-value="Low" title="Execution risk: Low (higher is riskier). Uses existing CGM-only features and person-level splits."><span class="chip-label">Exec. risk</span><span class="chip-value">Low</span></li><li class="chip" data-value="Short" title="Time to evidence: Short (lower is faster). Retrospective analysis on an existing cohort."><span class="chip-label">Time</span><span class="chip-value">Short</span></li><li class="chip" data-value="Moderate" title="Potential impact: Moderate (higher is better). Methodological contribution to phenotyping; limited clinical reach alone."><span class="chip-label">Impact</span><span class="chip-value">Moderate</span></li><li class="chip" data-kind="state"><span class="chip-label">Claim state</span><span class="chip-value">hypothesis</span></li></ul><details><summary>Prediction, falsifier, and alternatives</summary><dl><dt>Prediction</dt><dd>Held-out within-person improvement over a variability-summary baseline.</dd><dt>Falsifier</dt><dd>No held-out improvement beyond the baseline under a person-level split.</dd><dt>Minimum evidence</dt><dd>One existing CGM cohort with person-level splits and a frozen feature set.</dd><dt>Rival explanation</dt><dd>Wear-time and sensor-placement effects explain the apparent timing signal.</dd><dt>Null or redundancy</dt><dd>Excursion timing is redundant with existing variability summaries.</dd><dt>Artifact or confounding</dt><dd>Detection thresholds, not physiology, generate the timing pattern.</dd></dl></details></article><article class="hypothesis"><p class="id">H2 · high-upside</p><h3>Excursion phenotype is validated against reference-labelled excursions</h3><p class="claim">A detector validated against reference-labelled excursions supports a transferable phenotype across cohorts.</p><ul class="chips"><li class="chip" data-value="High" title="Scientific risk: High (higher is riskier). Depends on reference labels that may not exist at usable scale."><span class="chip-label">Sci. risk</span><span class="chip-value">High</span></li><li class="chip" data-value="High" title="Execution risk: High (higher is riskier). Requires data access, labelling effort, and cross-cohort harmonization."><span class="chip-label">Exec. risk</span><span class="chip-value">High</span></li><li class="chip" data-value="Long" title="Time to evidence: Long (lower is faster). Validation precedes any association testing."><span class="chip-label">Time</span><span class="chip-value">Long</span></li><li class="chip" data-value="High" title="Potential impact: High (higher is better). Would make downstream phenotype claims defensible."><span class="chip-label">Impact</span><span class="chip-value">High</span></li><li class="chip" data-kind="state"><span class="chip-label">Claim state</span><span class="chip-value">hypothesis</span></li></ul><details><summary>Prediction, falsifier, and alternatives</summary><dl><dt>Prediction</dt><dd>Detector agreement with reference labels above a pre-registered threshold in an external cohort.</dd><dt>Falsifier</dt><dd>Detector fails the pre-registered agreement threshold out of cohort.</dd><dt>Minimum evidence</dt><dd>One reference-labelled dataset plus one external cohort for transfer.</dd><dt>Rival explanation</dt><dd>Agreement reflects label construction rather than detector validity.</dd><dt>Null or redundancy</dt><dd>Detector performs no better than a threshold rule on the same labels.</dd><dt>Artifact or confounding</dt><dd>Cohort-specific sampling explains apparent transfer.</dd></dl></details></article><article class="hypothesis"><p class="id">H3 · rival</p><h3>Signal is explained by wear-time and device effects</h3><p class="claim">Apparent excursion-phenotype associations are attributable to wear-time and device differences.</p><ul class="chips"><li class="chip" data-value="Low" title="Scientific risk: Low (higher is riskier). Directly testable with existing metadata."><span class="chip-label">Sci. risk</span><span class="chip-value">Low</span></li><li class="chip" data-value="Low" title="Execution risk: Low (higher is riskier). Uses existing covariates and sensitivity analysis."><span class="chip-label">Exec. risk</span><span class="chip-value">Low</span></li><li class="chip" data-value="Short" title="Time to evidence: Short (lower is faster). Fits an existing analysis run."><span class="chip-label">Time</span><span class="chip-value">Short</span></li><li class="chip" data-value="Moderate" title="Potential impact: Moderate (higher is better). Protects every other claim from a common failure mode."><span class="chip-label">Impact</span><span class="chip-value">Moderate</span></li><li class="chip" data-kind="state"><span class="chip-label">Claim state</span><span class="chip-value">rival</span></li></ul><details><summary>Prediction, falsifier, and alternatives</summary><dl><dt>Prediction</dt><dd>Adjusting for wear time and device materially attenuates the association.</dd><dt>Falsifier</dt><dd>Association survives adjustment with a practically unchanged effect size.</dd><dt>Minimum evidence</dt><dd>Wear-time and device metadata in the same cohort.</dd><dt>Rival explanation</dt><dd>Not applicable — this is the rival explanation.</dd><dt>Null or redundancy</dt><dd>Not applicable.</dd><dt>Artifact or confounding</dt><dd>Not applicable.</dd></dl></details></article></div></section><section class="section" id="matrix"><h2><span class="nav-index">06</span> Risk–impact matrix</h2><p>The four axes are reported separately and deliberately not collapsed into a composite score. Ordinal anchors and axis directions are defined in the hypothesis-assessment skill.</p><div class="table-wrap"><table><caption>Ordinal ratings with rationale. No composite or weighted total is computed.</caption><thead><tr><th scope="col" class="mono">Hypothesis</th><th scope="col">Scientific risk</th><th scope="col">Execution risk</th><th scope="col">Time to evidence</th><th scope="col">Potential impact</th><th scope="col">Pareto note</th></tr></thead><tbody><tr><td class="mono">H1</td><td>Moderate</td><td>Low</td><td>Short</td><td>Moderate</td><td>Best time-to-evidence; not dominant on impact.</td></tr><tr><td class="mono">H2</td><td>High</td><td>High</td><td>Long</td><td>High</td><td>Highest impact, highest risk; no dominance.</td></tr><tr><td class="mono">H3</td><td>Low</td><td>Low</td><td>Short</td><td>Moderate</td><td>Pareto-dominant on risk and time at equal impact.</td></tr></tbody></table></div><div class="callout"><h3>Most uncertain axis</h3><ul><li>Potential impact: depends on whether any reference-labelled dataset is obtainable, which is unverified.</li><li>No hypothesis dominates the portfolio on all four axes; the trade-off is real, not a presentation artifact.</li></ul></div></section><section class="section" id="falsifiers"><h2><span class="nav-index">07</span> Falsifiers and minimum evidence</h2><div class="table-wrap"><table><caption>The decisive comparison and smallest informative test for each shortlisted hypothesis.</caption><thead><tr><th scope="col" class="mono">Hypothesis</th><th scope="col">Decisive comparison</th><th scope="col">Minimum evidence</th><th scope="col">Falsified if</th></tr></thead><tbody><tr><td class="mono">H1</td><td>Held-out within-person model vs variability-summary baseline</td><td>One existing CGM cohort, person-level split</td><td>No held-out improvement over baseline</td></tr><tr><td class="mono">H2</td><td>Detector agreement vs reference labels, then external transfer</td><td>One labelled dataset plus one external cohort</td><td>Fails pre-registered agreement threshold out of cohort</td></tr><tr><td class="mono">H3</td><td>Adjusted vs unadjusted association with wear-time and device covariates</td><td>Cohort metadata with wear time and device</td><td>Association attenuates to a practically null effect</td></tr></tbody></table></div></section><section class="section" id="open"><h2><span class="nav-index">08</span> Unresolved questions and disagreements</h2><div class="callout"><h3>Open</h3><ul><li>Whether reference-labelled excursion data exists at usable scale is unverified.</li><li>Two sources remain awaiting_full_text; neither supports a verified claim here.</li><li>Disagreement preserved: reviewers differed on whether H1&#x27;s incremental signal would survive device adjustment.</li></ul></div></section><section class="section" id="skeptic"><h2><span class="nav-index">09</span> Skeptic pass</h2><p><span class="independence">independent — fresh context, preference-blinded</span> Critic independence is labeled as recorded; a same-context pass is never presented as independent.</p><div class="skeptic-group"><h3>Blocking defects</h3><ul><li>H2 is presented with the same claim state as H1 despite resting on data that has not been confirmed to exist.</li><li>The evidence table reports two metrics from S1 and S2 as if comparable; their event units differ.</li></ul></div><div class="skeptic-group"><h3>High-impact improvements</h3><ul><li>State how wear-time adjustment is operationalized before H1 is tested.</li><li>Add the empty-state note that no claim depends on S3.</li></ul></div><div class="skeptic-group"><h3>Optional notes</h3><ul><li>Collapse the matrix note on Pareto dominance into the legend text.</li></ul></div><div class="callout"><h3>Preserved dissent</h3><ul><li>The critic holds that H1 should not be shortlisted until device adjustment is specified, and that view was not adopted in this artifact.</li></ul></div></section>
+</main>
+<footer class="report-footer">
+<p class="neutrality">Neutral hypothesis portfolio. No option, hypothesis, or direction is recommended; the portfolio and its trade-offs are presented for group discussion.</p>
+<p>Method: literature-evidence-synthesis (decision-grade) then hypothesis-assessment (generate-then-assess), with an internal preference-blinded skeptic pass. Consensus MCP discovery plus an independent search route.</p>
+<p>Provenance: search ledger, evidence records, claim records, and matrix data retained as report input JSON alongside this render.</p>
+</footer>
+<script data-bil-spy>
+(function () {
+  var sections = [].slice.call(document.querySelectorAll('section.section'));
+  var links = {};
+  [].slice.call(document.querySelectorAll('.section-nav a')).forEach(function (a) {
+    links[(a.getAttribute('href') || '').slice(1)] = a;
+  });
+  function mark() {
+    var y = window.scrollY + 96, current = null;
+    sections.forEach(function (s) { if (s.offsetTop <= y) { current = s.id; } });
+    if (!current && sections.length) { current = sections[0].id; }
+    Object.keys(links).forEach(function (id) {
+      if (id === current) { links[id].setAttribute('aria-current', 'true'); }
+      else { links[id].removeAttribute('aria-current'); }
+    });
+  }
+  window.addEventListener('scroll', mark, { passive: true });
+  window.addEventListener('resize', mark, { passive: true });
+  mark();
+})();
+</script>
+</body>
+</html>

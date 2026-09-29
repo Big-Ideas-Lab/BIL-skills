@@ -1,0 +1,7 @@
+claim_id,claim_text,epistemic_label,source_id,locator,verification_state,supports_as_stated,contradicted_by,notes
+C1,<claim as it will appear in the deliverable>,evidence,S1,<section/table/page>,full-text verified,yes,,<exact span read>
+C2,<synthesis claim built from two verified sources>,synthesis,S1|S2,<locators>,full-text verified,yes,<source id if any>,<how the two sources were combined>
+C3,<claim following from evidence but not reported anywhere>,inference,S1,<locator>,full-text verified,n/a,,<what assumption the inference rests on>
+C4,<claim with no supporting source>,unsupported,,,unsupported,no,,abstain locally — do not present as established
+C5,<claim where sources disagree>,mixed,S1|S2,<locators>,full-text verified,partially,S2,<report both results; do not average>
+C6,<claim not yet determined>,unknown,,,awaiting_full_text,,,propose the smallest next step

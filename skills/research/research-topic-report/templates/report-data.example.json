@@ -1,0 +1,316 @@
+{
+  "title": "CGM-derived glucose excursion phenotype as a cardiometabolic risk signal",
+  "topic_id": "cgm-excursion-phenotype",
+  "topic_statement": "Assess which glucose-excursion-derived phenotypes could support a defensible cardiometabolic risk signal, and lay out the trade-offs between candidate hypotheses before the group commits effort.",
+  "lane": "decision-grade",
+  "built": "2026-09-29",
+  "sections": [
+    {
+      "id": "scope",
+      "title": "Topic and scope",
+      "kind": "prose",
+      "body": [
+        "Research direction (fixed input): derive interpretable glucose-excursion phenotypes from continuous glucose monitoring and test whether they carry incremental cardiometabolic information beyond established summary metrics.",
+        "In scope: excursion detection and characterization from CGM-only input; within-person and between-person comparisons where the design supports them; explicit measurement validation before outcome association.",
+        "Out of scope: causal claims about diet or clinical events without reference labels; device-level algorithmic claims; and any advocation of a single direction.",
+        {
+          "list": [
+            "Inferential boundary: an algorithm-defined excursion is not a meal, exposure, diagnosis, or response until reference evidence supports the attribution.",
+            "Access boundary: controlled-data analyses and external outreach are separate authorizations from this report."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evidence",
+      "title": "Evidence brief",
+      "kind": "prose",
+      "body": [
+        "Existing work establishes that CGM-derived variability summaries associate with cardiometabolic outcomes, while excursion-level phenotyping remains less standardized and largely unvalidated against reference labels.",
+        {
+          "list": [
+            "Established: sensor-derived variability summaries and time-in-range metrics have reproducible associations with glycaemic control.",
+            "Contested: whether excursion shape and timing add information beyond those summaries, and how much of that signal is measurement artifact.",
+            "Gap: reference-labelled datasets that let an excursion detector be validated before it is used as a phenotype."
+          ]
+        },
+        {
+          "callout": {
+            "title": "Known limitation",
+            "items": [
+              "Full text for two sources remains awaiting_full_text; no claim in this report depends on them.",
+              "One included conference abstract supports discovery only and is not used to verify any claim."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "evidence-table",
+      "title": "Evidence table",
+      "kind": "prose",
+      "body": [
+        {
+          "table": {
+            "caption": "Included sources, discovery route, verification state, and comparability stratum.",
+            "columns": [
+              {"key": "id", "label": "Source", "mono": true},
+              {"key": "route", "label": "Discovery route"},
+              {"key": "state", "label": "Verification"},
+              {"key": "stratum", "label": "Comparison stratum"},
+              {"key": "note", "label": "Limitation"}
+            ],
+            "rows": [
+              {
+                "id": "S1",
+                "route": "Consensus MCP + Independent",
+                "state": "full-text verified",
+                "stratum": "adult CGM cohort / person-level split",
+                "note": "Reference standard is self-report; excursion attribution unsupported."
+              },
+              {
+                "id": "S2",
+                "route": "Consensus MCP + Reference chaining",
+                "state": "full-text verified",
+                "stratum": "adult CGM cohort / person-level split",
+                "note": "Metrics reported on a different event unit than S1; not comparable."
+              },
+              {
+                "id": "S3",
+                "route": "Consensus MCP",
+                "state": "awaiting_full_text",
+                "stratum": "not comparable",
+                "note": "Discovery candidate only; excluded from verification."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "claim-map",
+      "title": "Claim-to-source map",
+      "kind": "prose",
+      "body": [
+        {
+          "table": {
+            "caption": "Every decision-relevant claim with its locator, epistemic status, and verification state.",
+            "columns": [
+              {"key": "claim", "label": "Claim"},
+              {"key": "source", "label": "Source", "mono": true},
+              {"key": "locator", "label": "Locator", "mono": true},
+              {"key": "status", "label": "Status"},
+              {"key": "state", "label": "Verification"}
+            ],
+            "rows": [
+              {
+                "claim": "Variability summaries associate with glycaemic control in adults.",
+                "source": "S1",
+                "locator": "Results, primary model, Table 2",
+                "status": "evidence",
+                "state": "verified"
+              },
+              {
+                "claim": "Excursion timing adds information beyond variability summaries.",
+                "source": "S2",
+                "locator": "Discussion, paragraph 3",
+                "status": "synthesis",
+                "state": "verified (source is hypothesis-generating, not confirmatory)"
+              },
+              {
+                "claim": "Excursion shape is a validated proxy for postprandial response.",
+                "source": "—",
+                "locator": "—",
+                "status": "speculation",
+                "state": "unsupported — no locator"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "hypotheses",
+      "title": "Hypothesis portfolio",
+      "kind": "hypotheses",
+      "lead": [
+        "Chip legend: Sci. risk = scientific risk, Exec. risk = execution risk, Time = time to evidence, Impact = potential impact. Scientific and execution risk read higher-is-riskier; time reads lower-is-faster; impact reads higher-is-better. The four axes stay separate and no composite score is computed."
+      ],
+      "body": [
+        {
+          "id": "H1",
+          "class": "focal",
+          "title": "Excursion timing carries incremental within-person information",
+          "claim": "Excursion timing features predict next-window glycaemic state better than variability summaries alone.",
+          "claim_state": "hypothesis",
+          "axes": {
+            "scientific_risk": {"value": "Moderate", "rationale": "Within-person signal is plausible; confounding by sensor wear pattern is unresolved."},
+            "execution_risk": {"value": "Low", "rationale": "Uses existing CGM-only features and person-level splits."},
+            "time_to_evidence": {"value": "Short", "rationale": "Retrospective analysis on an existing cohort."},
+            "potential_impact": {"value": "Moderate", "rationale": "Methodological contribution to phenotyping; limited clinical reach alone."}
+          },
+          "prediction": "Held-out within-person improvement over a variability-summary baseline.",
+          "falsifier": "No held-out improvement beyond the baseline under a person-level split.",
+          "minimum_evidence": "One existing CGM cohort with person-level splits and a frozen feature set.",
+          "rival": "Wear-time and sensor-placement effects explain the apparent timing signal.",
+          "null": "Excursion timing is redundant with existing variability summaries.",
+          "artifact": "Detection thresholds, not physiology, generate the timing pattern."
+        },
+        {
+          "id": "H2",
+          "class": "high-upside",
+          "title": "Excursion phenotype is validated against reference-labelled excursions",
+          "claim": "A detector validated against reference-labelled excursions supports a transferable phenotype across cohorts.",
+          "claim_state": "hypothesis",
+          "axes": {
+            "scientific_risk": {"value": "High", "rationale": "Depends on reference labels that may not exist at usable scale."},
+            "execution_risk": {"value": "High", "rationale": "Requires data access, labelling effort, and cross-cohort harmonization."},
+            "time_to_evidence": {"value": "Long", "rationale": "Validation precedes any association testing."},
+            "potential_impact": {"value": "High", "rationale": "Would make downstream phenotype claims defensible."}
+          },
+          "prediction": "Detector agreement with reference labels above a pre-registered threshold in an external cohort.",
+          "falsifier": "Detector fails the pre-registered agreement threshold out of cohort.",
+          "minimum_evidence": "One reference-labelled dataset plus one external cohort for transfer.",
+          "rival": "Agreement reflects label construction rather than detector validity.",
+          "null": "Detector performs no better than a threshold rule on the same labels.",
+          "artifact": "Cohort-specific sampling explains apparent transfer."
+        },
+        {
+          "id": "H3",
+          "class": "rival",
+          "title": "Signal is explained by wear-time and device effects",
+          "claim": "Apparent excursion-phenotype associations are attributable to wear-time and device differences.",
+          "claim_state": "rival",
+          "axes": {
+            "scientific_risk": {"value": "Low", "rationale": "Directly testable with existing metadata."},
+            "execution_risk": {"value": "Low", "rationale": "Uses existing covariates and sensitivity analysis."},
+            "time_to_evidence": {"value": "Short", "rationale": "Fits an existing analysis run."},
+            "potential_impact": {"value": "Moderate", "rationale": "Protects every other claim from a common failure mode."}
+          },
+          "prediction": "Adjusting for wear time and device materially attenuates the association.",
+          "falsifier": "Association survives adjustment with a practically unchanged effect size.",
+          "minimum_evidence": "Wear-time and device metadata in the same cohort.",
+          "rival": "Not applicable — this is the rival explanation.",
+          "null": "Not applicable.",
+          "artifact": "Not applicable."
+        }
+      ]
+    },
+    {
+      "id": "matrix",
+      "title": "Risk–impact matrix",
+      "kind": "prose",
+      "body": [
+        "The four axes are reported separately and deliberately not collapsed into a composite score. Ordinal anchors and axis directions are defined in the hypothesis-assessment skill.",
+        {
+          "table": {
+            "caption": "Ordinal ratings with rationale. No composite or weighted total is computed.",
+            "columns": [
+              {"key": "id", "label": "Hypothesis", "mono": true},
+              {"key": "sci", "label": "Scientific risk"},
+              {"key": "exec", "label": "Execution risk"},
+              {"key": "time", "label": "Time to evidence"},
+              {"key": "impact", "label": "Potential impact"},
+              {"key": "pareto", "label": "Pareto note"}
+            ],
+            "rows": [
+              {"id": "H1", "sci": "Moderate", "exec": "Low", "time": "Short", "impact": "Moderate", "pareto": "Best time-to-evidence; not dominant on impact."},
+              {"id": "H2", "sci": "High", "exec": "High", "time": "Long", "impact": "High", "pareto": "Highest impact, highest risk; no dominance."},
+              {"id": "H3", "sci": "Low", "exec": "Low", "time": "Short", "impact": "Moderate", "pareto": "Pareto-dominant on risk and time at equal impact."}
+            ]
+          }
+        },
+        {
+          "callout": {
+            "title": "Most uncertain axis",
+            "items": [
+              "Potential impact: depends on whether any reference-labelled dataset is obtainable, which is unverified.",
+              "No hypothesis dominates the portfolio on all four axes; the trade-off is real, not a presentation artifact."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "falsifiers",
+      "title": "Falsifiers and minimum evidence",
+      "kind": "prose",
+      "body": [
+        {
+          "table": {
+            "caption": "The decisive comparison and smallest informative test for each shortlisted hypothesis.",
+            "columns": [
+              {"key": "id", "label": "Hypothesis", "mono": true},
+              {"key": "test", "label": "Decisive comparison"},
+              {"key": "minimum", "label": "Minimum evidence"},
+              {"key": "stop", "label": "Falsified if"}
+            ],
+            "rows": [
+              {
+                "id": "H1",
+                "test": "Held-out within-person model vs variability-summary baseline",
+                "minimum": "One existing CGM cohort, person-level split",
+                "stop": "No held-out improvement over baseline"
+              },
+              {
+                "id": "H2",
+                "test": "Detector agreement vs reference labels, then external transfer",
+                "minimum": "One labelled dataset plus one external cohort",
+                "stop": "Fails pre-registered agreement threshold out of cohort"
+              },
+              {
+                "id": "H3",
+                "test": "Adjusted vs unadjusted association with wear-time and device covariates",
+                "minimum": "Cohort metadata with wear time and device",
+                "stop": "Association attenuates to a practically null effect"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "open",
+      "title": "Unresolved questions and disagreements",
+      "kind": "prose",
+      "body": [
+        {
+          "callout": {
+            "title": "Open",
+            "items": [
+              "Whether reference-labelled excursion data exists at usable scale is unverified.",
+              "Two sources remain awaiting_full_text; neither supports a verified claim here.",
+              "Disagreement preserved: reviewers differed on whether H1's incremental signal would survive device adjustment."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "skeptic",
+      "title": "Skeptic pass",
+      "kind": "skeptic",
+      "body": {
+        "independence": "independent — fresh context, preference-blinded",
+        "blocking": [
+          "H2 is presented with the same claim state as H1 despite resting on data that has not been confirmed to exist.",
+          "The evidence table reports two metrics from S1 and S2 as if comparable; their event units differ."
+        ],
+        "high_impact": [
+          "State how wear-time adjustment is operationalized before H1 is tested.",
+          "Add the empty-state note that no claim depends on S3."
+        ],
+        "optional": [
+          "Collapse the matrix note on Pareto dominance into the legend text."
+        ],
+        "dissent": [
+          "The critic holds that H1 should not be shortlisted until device adjustment is specified, and that view was not adopted in this artifact."
+        ]
+      }
+    }
+  ],
+  "footer": {
+    "method": "Method: literature-evidence-synthesis (decision-grade) then hypothesis-assessment (generate-then-assess), with an internal preference-blinded skeptic pass. Consensus MCP discovery plus an independent search route.",
+    "provenance": "Provenance: search ledger, evidence records, claim records, and matrix data retained as report input JSON alongside this render."
+  }
+}

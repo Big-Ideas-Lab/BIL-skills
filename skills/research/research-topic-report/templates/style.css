@@ -1,0 +1,211 @@
+/* BIL research topic report — report layout layer over BIG IDEAs Lab tokens.
+   Embedded verbatim into the rendered report; no external requests. */
+
+:root {
+  --blue-900: #012169;
+  --blue-800: #003A70;
+  --blue-700: #00539B;
+  --blue-100: #E8F1FA;
+  --blue-050: #F4F8FC;
+  --white: #FFFFFF;
+  --ink-950: #111318;
+  --ink-700: #3F4650;
+  --ink-500: #68717D;
+  --gray-200: #D9DEE5;
+  --gray-100: #EDF0F4;
+  --gray-050: #F7F8FA;
+
+  --background: var(--white);
+  --surface: var(--gray-050);
+  --surface-accent: var(--blue-050);
+  --text-primary: var(--ink-950);
+  --text-secondary: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --border: var(--gray-200);
+  --primary: var(--blue-900);
+  --primary-hover: var(--blue-800);
+  --focus: var(--blue-700);
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --step-1: 8px;  --step-2: 16px; --step-3: 24px;
+  --step-4: 32px; --step-5: 48px; --step-6: 72px;
+  --shell: 1080px;
+  --pad: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+.report { max-width: var(--shell); margin: 0 auto; padding: 0 var(--pad) var(--step-6); }
+
+a { color: var(--blue-800); }
+a:hover { color: var(--primary); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.masthead { padding: var(--step-5) 0 var(--step-4); border-bottom: 1px solid var(--border); }
+.masthead h1 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--step-2);
+  max-width: 46ch;
+}
+.topic-statement { font-size: 18px; color: var(--text-secondary); margin: 0 0 var(--step-3); max-width: 68ch; }
+
+.meta-row { display: flex; flex-wrap: wrap; gap: var(--step-2); align-items: center; font-size: 13px; color: var(--text-muted); }
+.meta-row dl { display: flex; flex-wrap: wrap; gap: var(--step-3); margin: 0; }
+.meta-row dt { font-weight: 600; color: var(--text-secondary); }
+.meta-row dd { margin: 0; font-family: var(--font-mono); }
+
+.lane-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-accent);
+  color: var(--primary);
+}
+
+/* The nav box stays inside the shell (so it never widens the document) while a
+   full-bleed band is painted behind it by a pseudo-element. */
+.section-nav {
+  position: sticky; top: 0; z-index: 5;
+  margin: 0 0 var(--step-4);
+  padding: var(--step-1) 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  background: transparent;
+}
+.section-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+  z-index: -1;
+}
+.section-nav ul { display: flex; gap: var(--step-3); list-style: none; margin: 0; padding: 0; }
+.section-nav a { font-size: 13px; text-decoration: none; color: var(--text-secondary); }
+.section-nav a:hover { color: var(--primary); text-decoration: underline; }
+/* Active-section marker, set by the optional scroll-spy script. Without
+   JavaScript every item simply stays unmarked; the nav still works. */
+.section-nav a[aria-current="true"] { color: var(--primary); font-weight: 600; text-decoration: underline; }
+.section-nav .nav-index { font-family: var(--font-mono); color: var(--text-muted); margin-right: 6px; }
+.section-nav a[aria-current="true"] .nav-index { color: var(--primary); }
+
+.section { padding: var(--step-5) 0 0; }
+.section > h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 var(--step-3);
+  padding-bottom: var(--step-1);
+  border-bottom: 1px solid var(--border);
+}
+.section h3 { font-family: var(--font-sans); font-size: 17px; font-weight: 600; margin: var(--step-3) 0 var(--step-1); }
+.section p, .section li { max-width: 74ch; }
+.section ul, .section ol { padding-left: var(--step-3); }
+
+.lede { font-size: 17px; color: var(--text-secondary); }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 16px; margin: var(--step-3) 0; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+caption { text-align: left; padding: var(--step-2); font-size: 13px; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); min-width: 96px; }
+thead th { position: sticky; top: 0; background: var(--surface); font-weight: 600; color: var(--text-secondary); }
+tbody tr:last-child td { border-bottom: 0; }
+td.mono, th.mono, .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 12.5px; }
+
+/* A flowing grid keeps card order row-wise and every card in a row top-aligned
+   and equal in width. An odd card count leaves one empty cell in the last row,
+   which reads as intentional; balanced multi-column flow instead drops the odd
+   card to a much shorter second column and looks unfinished. */
+.hypotheses { display: grid; grid-template-columns: 1fr; gap: var(--step-3); margin: var(--step-3) 0; }
+@media (min-width: 900px) { .hypotheses { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.hypothesis {
+  break-inside: avoid; page-break-inside: avoid;
+  margin: 0 0 var(--step-3);
+  border: 1px solid var(--border); border-radius: 16px; padding: var(--step-3); background: var(--white);
+}
+.hypothesis h3 { margin: 0 0 6px; font-size: 16px; }
+.hypothesis .claim { margin: 0 0 var(--step-2); color: var(--text-primary); }
+.hypothesis .id { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 var(--step-2); list-style: none; padding: 0; }
+.chip {
+  display: inline-flex; align-items: baseline; gap: 5px;
+  flex: 0 0 auto; white-space: nowrap;
+  font-size: 12px; padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+}
+.chip .chip-label { font-weight: 600; }
+.chip .chip-value { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.chip[data-value="High"] { background: var(--blue-050); border-color: var(--blue-100); color: var(--primary); }
+.chip[data-value="Low"] { background: var(--gray-100); }
+.chip[data-kind="state"] { background: var(--white); }
+
+details { border-top: 1px solid var(--border); padding-top: var(--step-2); }
+summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--blue-800); min-height: 44px; display: flex; align-items: center; gap: 6px; }
+summary::marker { color: var(--text-muted); }
+details > dl { margin: var(--step-2) 0 0; font-size: 13px; }
+details dt { font-weight: 600; color: var(--text-secondary); margin-top: var(--step-2); }
+details dd { margin: 2px 0 0; color: var(--text-primary); max-width: 74ch; }
+
+.callout { border-left: 4px solid var(--focus); background: var(--surface-accent); padding: var(--step-2) var(--step-3); border-radius: 0 8px 8px 0; margin: var(--step-3) 0; }
+.callout h3 { margin-top: 0; }
+.callout ul { margin: 0; }
+
+.skeptic-group { margin: var(--step-3) 0; }
+.skeptic-group h3 { display: flex; align-items: center; gap: var(--step-1); }
+.independence { font-family: var(--font-mono); font-size: 12px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; background: var(--white); color: var(--text-secondary); text-transform: none; letter-spacing: 0; }
+
+.empty { color: var(--text-muted); font-style: italic; }
+
+.report-footer { border-top: 1px solid var(--border); margin-top: var(--step-5); padding-top: var(--step-3); font-size: 13px; color: var(--text-muted); }
+.report-footer .neutrality { color: var(--text-secondary); font-weight: 600; max-width: 74ch; }
+
+@media (max-width: 640px) {
+  :root { --pad: 20px; }
+  .masthead h1 { font-size: 30px; }
+  .section > h2 { font-size: 23px; }
+  .section p, .section li { max-width: none; }
+}
+
+@media print {
+  body { font-size: 11pt; }
+  .section-nav { display: none; }
+  .section { break-inside: avoid; page-break-inside: avoid; padding-top: 24pt; }
+  details { border-top: 0; }
+  details > dl { display: block !important; }
+  summary { display: none; }
+  a { color: #000; text-decoration: none; }
+  .table-wrap { overflow: visible; border-color: #000; }
+  th, td { border-color: #000; }
+  .hypotheses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

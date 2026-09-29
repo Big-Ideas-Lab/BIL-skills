@@ -1,0 +1,5 @@
+interface:
+  display_name: "Research topic report"
+  short_description: "Build a neutral hypothesis-portfolio HTML report for a defined research topic"
+policy:
+  allow_implicit_invocation: true

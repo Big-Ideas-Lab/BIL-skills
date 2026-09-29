@@ -1,0 +1,35 @@
+{
+  "name": "hypothesis-assessment",
+  "version": "1.0.0",
+  "lanes": ["routine", "decision-grade"],
+  "modes": ["generate-then-assess", "assess-supplied"],
+  "axes": [
+    "scientific risk",
+    "execution risk",
+    "time to evidence",
+    "potential impact"
+  ],
+  "composite_score": false,
+  "hypothesis_classes": [
+    "focal",
+    "rival",
+    "null",
+    "artifact/confounding",
+    "high-upside"
+  ],
+  "hypothesis_classes_apply_to": "shortlisted hypotheses in the decision-grade lane",
+  "outputs": [
+    "hypothesis register",
+    "risk-impact matrix",
+    "falsifier and minimum-evidence table"
+  ],
+  "references": [
+    "references/risk-impact-axes.md",
+    "references/hypothesis-generation.md",
+    "references/hypothesis-classes.md"
+  ],
+  "templates": [
+    "templates/hypothesis-register.md",
+    "templates/risk-impact-matrix.csv"
+  ]
+}

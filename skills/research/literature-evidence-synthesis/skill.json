@@ -1,0 +1,33 @@
+{
+  "name": "literature-evidence-synthesis",
+  "version": "1.0.0",
+  "lanes": ["routine", "decision-grade"],
+  "consensus_mcp": {
+    "required": true,
+    "lanes": ["routine", "decision-grade"],
+    "role": "discovery",
+    "endpoint": "https://mcp.consensus.app/mcp",
+    "notes": "Discovery candidates only; snippets and abstracts never verify a claim."
+  },
+  "decision_grade_requires": [
+    "independent search route beyond Consensus MCP",
+    "frozen eligibility criteria before screening",
+    "full-text source verification for every verified claim"
+  ],
+  "outputs": [
+    "evidence brief",
+    "evidence table",
+    "claim-to-source map"
+  ],
+  "references": [
+    "references/consensus-and-search-routes.md",
+    "references/evidence-grading.md",
+    "references/evaluation-comparability.md",
+    "references/decision-grade-gates.md"
+  ],
+  "templates": [
+    "templates/evidence-brief.md",
+    "templates/evidence-table.csv",
+    "templates/claim-source-map.csv"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "research-topic-report",
+  "version": "1.0.0",
+  "lanes": ["routine", "decision-grade"],
+  "depends_on_skills": [
+    "literature-evidence-synthesis",
+    "hypothesis-assessment"
+  ],
+  "recommendation": false,
+  "outputs": [
+    "neutral hypothesis portfolio",
+    "self-contained HTML report"
+  ],
+  "report_sections": [
+    "topic and scope",
+    "evidence brief",
+    "evidence table",
+    "claim-to-source map",
+    "hypothesis register",
+    "risk-impact matrix",
+    "rival null and confound explanations",
+    "falsifiers and minimum evidence",
+    "unresolved questions and disagreements",
+    "provenance and method"
+  ],
+  "design": {
+    "reuses": "BIL design tokens and typography",
+    "layout": "report-specific rules in DESIGN.md",
+    "offline": true,
+    "external_resources": false
+  },
+  "references": [
+    "references/report-contract.md",
+    "references/skeptic-pass.md",
+    "references/offline-html-contract.md"
+  ],
+  "templates": [
+    "templates/report-data.example.json",
+    "templates/style.css"
+  ],
+  "scripts": [
+    "scripts/build_report.py",
+    "scripts/validate.py"
+  ]
+}

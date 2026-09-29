@@ -2,7 +2,8 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .venv/
-skills/productivity/lab-meeting-slides/qa/rendered/
+.hermes/
+skills/productivity/presentation-slides/qa/rendered/
 *.lock
 *.tmp
 *.log

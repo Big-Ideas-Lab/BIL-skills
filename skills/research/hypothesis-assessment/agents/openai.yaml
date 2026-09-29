@@ -1,0 +1,5 @@
+interface:
+  display_name: "Hypothesis assessment"
+  short_description: "Generate or assess hypotheses on scientific risk, execution risk, time to evidence, and potential impact"
+policy:
+  allow_implicit_invocation: true

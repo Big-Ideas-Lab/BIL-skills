@@ -1,0 +1,5 @@
+interface:
+  display_name: "Literature evidence synthesis"
+  short_description: "Evidence brief, evidence table, and claim-to-source map with mandatory Consensus MCP discovery"
+policy:
+  allow_implicit_invocation: true
