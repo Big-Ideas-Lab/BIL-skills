@@ -4,6 +4,18 @@ A private, **BIG IDEAs Lab–internal** collection of reusable skills for the la
 
 Repository access does not expand the permitted use of Duke University or BIG IDEAs Lab names, logos, or other institutional marks. See [`TRADEMARKS.md`](./TRADEMARKS.md).
 
+## Design system
+
+The lab's HTML design system is the canonical reference surface for every BIL artifact — foundations, components, and the fixed-stage slide layouts in one page:
+
+```bash
+cd skills/productivity/presentation-slides
+python3 -m http.server 8000
+# then open http://localhost:8000/design-system/index.html
+```
+
+A public live link is pending Duke brand review: the catalog bundles institutional marks, and publication of those marks needs approval. See [`TRADEMARKS.md`](./TRADEMARKS.md).
+
 ## Included skills
 
 - [`presentation-slides`](./skills/productivity/presentation-slides/SKILL.md): create and reuse an HTML-first design system and fixed 16:9 HTML slide library for research updates, methods discussions, results, and decisions.
@@ -50,7 +62,7 @@ Install the three `research/` skills together when you want the composite report
 
 ## Development
 
-The slide skill is local, editable, and dependency-free. Open `design-system/index.html` for the recovered canonical workspace; start generation from `slide-templates/template-manifest.json` and its fixed-stage template. The Reddit CGM deck is provenance, and PowerPoint/PPTX is not the target medium.
+The slide skill is local, editable, and dependency-free. Open `design-system/index.html` for the recovered canonical workspace; start generation from `slide-templates/template-manifest.json` and its fixed-stage template. PowerPoint/PPTX is not the target medium.
 
 The research skills are instruction-and-template packages. Each ships `scripts/validate.py` and `tests/` that run with the standard library only:
 

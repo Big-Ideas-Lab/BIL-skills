@@ -7,7 +7,7 @@ argument-hint: "What presentation HTML slide or format should we create?"
 
 # Presentation slides
 
-The recovered BIG IDEAs Lab system in `design-system/` is canonical. `slide-templates/` is a separate sibling containing the reusable HTML template, machine-readable manifest, and approved Reddit CGM deck as provenance.
+The recovered BIG IDEAs Lab system in `design-system/` is canonical. `slide-templates/` is a separate sibling containing the reusable HTML template and machine-readable manifest.
 
 Use the single canonical `design-system/index.html` catalog as the reference surface. `slide-templates/template-manifest.json` is the generation contract: exactly three fixed layouts, Title, Title with Media, and Regular. The source wearable project is not a runtime dependency; HTML only is the target.
 
@@ -43,7 +43,6 @@ The final medium is HTML. Do not create PowerPoint/PPTX files or use PowerPoint-
 - `design-system/tokens.css`, `tokens.json`, and `DESIGN.md`: canonical recovered sources.
 - `slide-templates/bil-lab-presentation-template.html`: reusable fixed-stage template.
 - `slide-templates/template-manifest.json`: machine-readable slide contract.
-- `slide-templates/reference-decks/`: approved provenance deck, not a generic template.
 - `DESIGN.md`: layout rules and component guidance.
 
 ## Catalog contract

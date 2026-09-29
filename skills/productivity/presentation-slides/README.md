@@ -10,7 +10,7 @@ npx skills@latest add Big-Ideas-Lab/BIL-skills
 
 Choose `presentation-slides`. From this directory, run `python3 -m http.server 8000`, then open `http://localhost:8000/design-system/index.html` or `http://localhost:8000/slide-templates/bil-lab-presentation-template.html`. Start from the manifest; the source wearable project is not a runtime dependency.
 
-The catalog has one canonical page, `design-system/index.html`, ordered Color, Typography, Assets, Motion, Components, and Slides. The Reddit CGM deck is approved provenance, not a generic template.
+The catalog has one canonical page, `design-system/index.html`, ordered Color, Typography, Assets, Motion, Components, and Slides.
 
 ## File map
 
@@ -21,7 +21,6 @@ The catalog has one canonical page, `design-system/index.html`, ordered Color, T
 - `slide-templates/starters/`: clean Title, Title with Media, and Regular starter HTML
 - `slide-templates/bil-lab-presentation-template.html`: reusable fixed 1920×1080 template
 - `slide-templates/template-manifest.json`: generation contract
-- `slide-templates/reference-decks/`: approved Reddit CGM provenance, not a template
 - `DESIGN.md`: visual and accessibility system
 - `scripts/validate.py`: dependency-free validator
 - `tests/test_structure.py`: structural tests

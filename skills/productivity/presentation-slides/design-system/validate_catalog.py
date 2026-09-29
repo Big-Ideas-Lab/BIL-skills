@@ -9,7 +9,7 @@ def main():
  def c(ok,msg):
   if not ok:e.append(msg);print('[FAIL]',msg)
  c(h.count('<h1')==1,'catalog must have one H1')
- c('href="catalog.css?v=39"' in h and 'href="bil-components.css?v=6"' in h and 'catalog.js?v=16' in h,'catalog cache version mismatch')
+ c('href="catalog.css?v=40"' in h and 'href="bil-components.css?v=6"' in h and 'catalog.js?v=16' in h,'catalog cache version mismatch')
  order=['color','typography','assets','motion','components','slides']
  c(h.count('<h1')==1 and 'class="visually-hidden">BIG IDEAs Lab Design System</h1>' in h and '<span>Design System</span>' in h,'catalog H1/header mismatch')
  c(all('id="'+x+'"' in h for x in order),'required IA sections missing')
