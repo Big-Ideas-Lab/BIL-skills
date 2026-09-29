@@ -41,7 +41,7 @@ Each skill is self-contained. Read its `SKILL.md` first, then use its supporting
 Authorized BIG IDEAs Lab members with repository access can copy the skills into a project with the Skills installer:
 
 ```bash
-npx skills@latest add billchen0/BIL-skills
+npx skills@latest add Big-Ideas-Lab/BIL-skills
 ```
 
 Choose `presentation-slides` when prompted. The root `skills/` layout is compatible with the Skills installer workflow.

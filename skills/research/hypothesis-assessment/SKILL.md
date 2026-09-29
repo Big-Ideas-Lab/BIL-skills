@@ -13,7 +13,7 @@ The research direction is an **input**. It is defined upstream of literature wor
 
 ## When to Use
 
-- Bill or a lab member has candidate hypotheses and wants them compared before committing effort.
+- A lab member has candidate hypotheses and wants them compared before committing effort.
 - A topic or evidence brief needs genuinely different candidate hypotheses generated before assessment.
 - A proposed mechanism, endpoint, or analysis needs a falsifier and a minimum-evidence statement.
 - A shortlist needs rival, null, and artifact/confounding explanations made explicit.

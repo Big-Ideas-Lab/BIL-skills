@@ -45,7 +45,7 @@
    "contentLimits": "Name 32 characters; role or affiliation 48 characters.",
    "accessibility": "Use an informative avatar alt or mark it decorative when the adjacent name is present.",
    "className": "bil-person-marker",
-   "html": "<div class=\"bil-person-marker\" data-size=\"compact\"><span class=\"bil-avatar\" aria-hidden=\"true\">BC</span><span><strong>Bill Chen</strong><small>Presenter \u00b7 BIG IDEAs Lab</small></span></div>"
+   "html": "<div class=\"bil-person-marker\" data-size=\"compact\"><span class=\"bil-avatar\" aria-hidden=\"true\">PN</span><span><strong>Presenter Name</strong><small>Presenter \u00b7 BIG IDEAs Lab</small></span></div>"
   },
   {
    "id": "inline-citation",

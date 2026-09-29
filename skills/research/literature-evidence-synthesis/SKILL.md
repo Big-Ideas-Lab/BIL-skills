@@ -16,7 +16,7 @@ Laya is the required first-pass screener at **both** the title/abstract and full
 ## When to Use
 
 - A literature-dependent, causal, clinical, quantitative, or novelty claim could change a research decision.
-- Bill or a lab member asks for an evidence brief, evidence table, claim-to-source map, screening flow, gap map, or novelty check.
+- A lab member asks for an evidence brief, evidence table, claim-to-source map, screening flow, gap map, or novelty check.
 - A manuscript, grant section, or slide needs cited claims grounded in retrievable sources.
 
 Don't use for: casual orientation with no cited claim, hypothesis scoring (use `hypothesis-assessment`), grammar or style passes, or assembling a topic-level report (use `research-topic-report`).

@@ -24,7 +24,7 @@ The three skills compose. `research-topic-report` orchestrates the other two and
 These skills are privately hosted and maintained for authorized BIL lab use rather than as a general-purpose public workflow standard. Installation requires access to the private repository.
 
 ```bash
-npx skills@latest add billchen0/BIL-skills
+npx skills@latest add Big-Ideas-Lab/BIL-skills
 ```
 
 Install all three so the composite's skill dependencies resolve. `research-topic-report` also needs a configured Consensus MCP server and Python 3.9+ for its dependency-free report builder.

@@ -5,7 +5,7 @@ An HTML-first design-system workspace and fixed-stage slide template library for
 ## Quick start
 
 ```bash
-npx skills@latest add billchen0/BIL-skills
+npx skills@latest add Big-Ideas-Lab/BIL-skills
 ```
 
 Choose `presentation-slides`. From this directory, run `python3 -m http.server 8000`, then open `http://localhost:8000/design-system/index.html` or `http://localhost:8000/slide-templates/bil-lab-presentation-template.html`. Start from the manifest; the source wearable project is not a runtime dependency.

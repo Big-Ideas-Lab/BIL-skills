@@ -18,7 +18,7 @@ It then adds an internal **independent skeptic pass** and renders the report. Cr
 
 ## When to Use
 
-- Bill or a lab member names a research topic or direction and wants a discussion-ready portfolio.
+- A lab member names a research topic or direction and wants a discussion-ready portfolio.
 - A group meeting needs one artifact covering evidence, hypotheses, trade-offs, and unknowns.
 - A direction needs rival, null, and confound explanations laid out before any commitment.
 
@@ -29,7 +29,7 @@ Don't use for: choosing a research direction, an evidence brief alone (use `lite
 This skill orchestrates two sibling skills and does not replace them. Install all three so the dependencies resolve:
 
 ```bash
-npx skills@latest add billchen0/BIL-skills
+npx skills@latest add Big-Ideas-Lab/BIL-skills
 ```
 
 Also required: a configured Consensus MCP server (see `literature-evidence-synthesis`). Python 3.9+ for `scripts/build_report.py`; the builder needs no third-party packages. If a sibling skill is missing from the checkout, install it or copy its folder next to this one.

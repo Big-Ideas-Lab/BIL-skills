@@ -137,7 +137,7 @@ def check_skill_dependencies(manifest: dict, text: str) -> None:
         if not candidates:
             fail(
                 f"dependency {name!r} is absent from this checkout; install it with "
-                "'npx skills@latest add billchen0/BIL-skills' or copy the sibling folder"
+                "'npx skills@latest add Big-Ideas-Lab/BIL-skills' or copy the sibling folder"
             )
         for found in candidates:
             manifest_path = found.parent / "skill.json"
