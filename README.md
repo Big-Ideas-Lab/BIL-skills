@@ -1,6 +1,8 @@
 # BIL-skills
 
-A small collection of reusable skills for Bill's research and lab workflows.
+A publicly hosted, **BIG IDEAs Lab–internal** collection of reusable skills for the lab's research and presentation workflows. The package is opinionated for BIL members and is not maintained as a general-purpose public skill catalog.
+
+Public repository access does not expand the permitted use of Duke University or BIG IDEAs Lab names, logos, or other institutional marks. See [`TRADEMARKS.md`](./TRADEMARKS.md).
 
 ## Included skills
 
@@ -36,7 +38,7 @@ Each skill is self-contained. Read its `SKILL.md` first, then use its supporting
 
 ## Installation
 
-To copy the skills into a project with the Skills installer:
+For authorized BIG IDEAs Lab use, copy the skills into a project with the Skills installer:
 
 ```bash
 npx skills@latest add billchen0/BIL-skills
@@ -65,4 +67,4 @@ python3 scripts/build_report.py --data templates/report-data.example.json --out 
 
 ## License
 
-MIT. Each skill carries its own `LICENSE` file.
+The code and written skill instructions are MIT-licensed; each skill carries its own `LICENSE` file. Institutional names, logos, and marks are excluded from that license and remain subject to their owners' policies. See [`TRADEMARKS.md`](./TRADEMARKS.md).

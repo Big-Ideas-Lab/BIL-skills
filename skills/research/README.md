@@ -1,6 +1,6 @@
 # Research
 
-Scientific-process skills for BIL members: turn a question into verified evidence, turn hypotheses into a risk–impact comparison, and assemble a neutral portfolio report for group discussion.
+BIG IDEAs Lab–internal scientific-process skills: turn a question into verified evidence, turn hypotheses into a risk–impact comparison, and assemble a neutral portfolio report for group discussion.
 
 The three skills compose. `research-topic-report` orchestrates the other two and adds an internal independent skeptic pass; it does not reimplement their work.
 
@@ -20,6 +20,8 @@ The three skills compose. `research-topic-report` orchestrates the other two and
 - **Inaccessible sources stay in the record** as `awaiting_full_text`; they are never silently excluded and never carry a claim.
 
 ## Install
+
+These skills are publicly hosted for convenient installation but are maintained for authorized BIL lab use rather than as a general-purpose public workflow standard.
 
 ```bash
 npx skills@latest add billchen0/BIL-skills

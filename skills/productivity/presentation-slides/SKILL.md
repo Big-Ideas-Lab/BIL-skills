@@ -68,4 +68,4 @@ python3 -m unittest discover -s tests -v
 
 ## Asset and licensing boundary
 
-This repository provides code and generic layout primitives. Official institutional logos, lab marks, figures, citations, photographs, and scientific data must be supplied by the consuming lab with the appropriate permissions.
+This is a BIG IDEAs Lab–internal skill pack. It bundles catalogued design-system variants of BIL and Duke/BIL marks for authorized lab workflows; use only the exact files recorded in `design-system/assets/ASSET_REGISTER.md`, without redrawing or alteration. Repository inclusion is not trademark approval and does not place institutional marks under the MIT license. Follow current Duke brand and trademark requirements for every use. New figures, citations, photographs, scientific data, and project-specific assets still require appropriate provenance and permission.
