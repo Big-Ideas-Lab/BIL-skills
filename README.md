@@ -1,8 +1,8 @@
 # BIL-skills
 
-A publicly hosted, **BIG IDEAs Lab–internal** collection of reusable skills for the lab's research and presentation workflows. The package is opinionated for BIL members and is not maintained as a general-purpose public skill catalog.
+A private, **BIG IDEAs Lab–internal** collection of reusable skills for the lab's research and presentation workflows. The package is opinionated for BIL members and is not maintained as a general-purpose public skill catalog.
 
-Public repository access does not expand the permitted use of Duke University or BIG IDEAs Lab names, logos, or other institutional marks. See [`TRADEMARKS.md`](./TRADEMARKS.md).
+Repository access does not expand the permitted use of Duke University or BIG IDEAs Lab names, logos, or other institutional marks. See [`TRADEMARKS.md`](./TRADEMARKS.md).
 
 ## Included skills
 
@@ -38,7 +38,7 @@ Each skill is self-contained. Read its `SKILL.md` first, then use its supporting
 
 ## Installation
 
-For authorized BIG IDEAs Lab use, copy the skills into a project with the Skills installer:
+Authorized BIG IDEAs Lab members with repository access can copy the skills into a project with the Skills installer:
 
 ```bash
 npx skills@latest add billchen0/BIL-skills

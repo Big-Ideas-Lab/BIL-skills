@@ -1,6 +1,6 @@
 # Institutional marks
 
-BIL-skills is publicly hosted for convenient installation by members of the BIG IDEAs Lab. Its intended use is internal lab research, communication, and presentation work.
+BIL-skills is privately hosted for members of the BIG IDEAs Lab. Its intended use is internal lab research, communication, and presentation work.
 
 The MIT license in this repository applies to the code and written skill instructions. It does **not** grant rights to Duke University names, wordmarks, logos, unit identifiers, or BIG IDEAs Lab identity assets. Those marks remain the property of their respective owners and are subject to applicable Duke University brand and trademark policies.
 

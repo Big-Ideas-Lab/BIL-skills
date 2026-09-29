@@ -21,7 +21,7 @@ The three skills compose. `research-topic-report` orchestrates the other two and
 
 ## Install
 
-These skills are publicly hosted for convenient installation but are maintained for authorized BIL lab use rather than as a general-purpose public workflow standard.
+These skills are privately hosted and maintained for authorized BIL lab use rather than as a general-purpose public workflow standard. Installation requires access to the private repository.
 
 ```bash
 npx skills@latest add billchen0/BIL-skills
