@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("assets/fonts/source-serif-4/source-serif-4-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter/inter-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("assets/fonts/ibm-plex-mono/ibm-plex-mono-400-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("assets/fonts/ibm-plex-mono/ibm-plex-mono-500-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  /* Color foundations */
+  --color-blue-900: #012169;
+  --color-blue-800: #003a70;
+  --color-blue-700: #00539b;
+  --color-blue-100: #e8f1fa;
+  --color-blue-050: #f4f8fc;
+  --color-white: #ffffff;
+  --color-ink-950: #111318;
+  --color-ink-700: #3f4650;
+  --color-ink-500: #68717d;
+  --color-gray-200: #d9dee5;
+  --color-gray-100: #edf0f4;
+  --color-gray-050: #f7f8fa;
+
+  /* Semantic color */
+  --color-background: var(--color-white);
+  --color-surface: var(--color-gray-050);
+  --color-surface-accent: var(--color-blue-050);
+  --color-text-primary: var(--color-ink-950);
+  --color-text-secondary: var(--color-ink-700);
+  --color-text-muted: var(--color-ink-500);
+  --color-border: var(--color-gray-200);
+  --color-primary: var(--color-blue-900);
+  --color-primary-hover: var(--color-blue-800);
+  --color-focus: var(--color-blue-700);
+
+  /* Typography: self-hosted, free, and open-source */
+  --font-display: "Source Serif 4", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --type-display-xl: 400 clamp(3.5rem, 8vw, 8rem) / 0.92 var(--font-display);
+  --type-display-l: 400 clamp(2.75rem, 6vw, 5.5rem) / 0.96 var(--font-display);
+  --type-heading-1: 500 3rem / 1.02 var(--font-sans);
+  --type-heading-2: 500 2rem / 1.1 var(--font-sans);
+  --type-heading-3: 500 1.375rem / 1.2 var(--font-sans);
+  --type-body-l: 400 1.25rem / 1.55 var(--font-sans);
+  --type-body: 400 1rem / 1.55 var(--font-sans);
+  --type-small: 400 0.875rem / 1.45 var(--font-sans);
+  --type-label: 500 0.75rem / 1.2 var(--font-sans);
+  --type-data: 400 0.875rem / 1.4 var(--font-mono);
+
+  /* Radius. Cards are the working default on every presentation surface, so the
+     rounded card edge is a system-level value rather than a per-deck choice.
+     Media crops take the largest radius; controls stay nearly square. */
+  --radius-card: 16px;
+  --radius-media: 32px;
+  --radius-pill: 999px;
+}

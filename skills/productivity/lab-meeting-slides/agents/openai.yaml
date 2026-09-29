@@ -1,5 +1,0 @@
-interface:
-  display_name: "Lab meeting slides"
-  short_description: "Build reusable HTML lab-meeting slide formats"
-policy:
-  allow_implicit_invocation: true

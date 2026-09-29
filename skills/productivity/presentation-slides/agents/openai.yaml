@@ -1,0 +1,5 @@
+interface:
+  display_name: "Presentation slides"
+  short_description: "Use the BIL three-page catalog, 12 components, and two fixed HTML layouts"
+policy:
+  allow_implicit_invocation: true

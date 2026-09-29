@@ -1,0 +1,249 @@
+{
+ "slotVocabulary": [
+  "main",
+  "side",
+  "media",
+  "footer",
+  "chrome"
+ ],
+ "sizeVocabulary": [
+  "compact",
+  "standard",
+  "wide"
+ ],
+ "buttons": {
+  "tokens": [
+   "--button-min-size",
+   "--button-focus-ring",
+   "--button-radius"
+  ],
+  "minimumHitArea": "44px",
+  "focusRing": "3px solid #00539B",
+  "variants": [
+   "primary",
+   "secondary",
+   "ghost-text",
+   "icon",
+   "disabled",
+   "focus-visible"
+  ],
+  "iconLabelRequirement": "Icon-only buttons require an accessible label."
+ },
+ "components": [
+  {
+   "id": "person-marker",
+   "group": "People",
+   "purpose": "Identify one presenter or collaborator beside slide content.",
+   "slots": [
+    "side",
+    "footer"
+   ],
+   "sizes": [
+    "compact",
+    "standard"
+   ],
+   "contentLimits": "Name 32 characters; role or affiliation 48 characters.",
+   "accessibility": "Use an informative avatar alt or mark it decorative when the adjacent name is present.",
+   "className": "bil-person-marker",
+   "html": "<div class=\"bil-person-marker\" data-size=\"compact\"><span class=\"bil-avatar\" aria-hidden=\"true\">BC</span><span><strong>Bill Chen</strong><small>Presenter \u00b7 BIG IDEAs Lab</small></span></div>"
+  },
+  {
+   "id": "inline-citation",
+   "group": "References",
+   "purpose": "Attach a compact source marker to a claim.",
+   "slots": [
+    "main"
+   ],
+   "sizes": [
+    "compact"
+   ],
+   "contentLimits": "One citation marker; source label 64 characters.",
+   "accessibility": "Use a link with an accessible source label and visible focus.",
+   "className": "bil-inline-citation",
+   "html": "<a class=\"bil-inline-citation\" href=\"#source-1\" aria-label=\"Source 1: Chen et al. 2026\">[1]</a>"
+  },
+  {
+   "id": "source-footer",
+   "group": "References",
+   "purpose": "Place one provenance line at the slide edge.",
+   "slots": [
+    "footer"
+   ],
+   "sizes": [
+    "compact",
+    "standard"
+   ],
+   "contentLimits": "One line; 140 characters maximum.",
+   "accessibility": "Use a footer landmark and readable text, not color alone.",
+   "className": "bil-source-footer",
+   "html": "<footer class=\"bil-source-footer\">Source: Chen et al., 2026 \u00b7 DOI 10.xxxx/example</footer>"
+  },
+  {
+   "id": "reference-block",
+   "group": "References",
+   "purpose": "Show a short slide-level bibliography.",
+   "slots": [
+    "footer",
+    "main"
+   ],
+   "sizes": [
+    "standard",
+    "wide"
+   ],
+   "contentLimits": "Two to four entries; 110 characters per entry.",
+   "accessibility": "Use an ordered list with visible numbering.",
+   "className": "bil-reference-block",
+   "html": "<ol class=\"bil-reference-block\"><li>Chen B. et al. <em>Wearable signals</em>. 2026.</li><li>Duke BME methods report. 2025.</li></ol>"
+  },
+  {
+   "id": "page-turner",
+   "group": "Structure",
+   "purpose": "Navigate and orient within a bounded deck sequence.",
+   "slots": [
+    "chrome",
+    "footer"
+   ],
+   "sizes": [
+    "compact"
+   ],
+   "contentLimits": "Current page and total pages.",
+   "accessibility": "Use accessible previous/next buttons and a live page tracker.",
+   "className": "bil-page-turner",
+   "html": "<nav class=\"bil-page-turner\" data-current=\"8\" data-total=\"10\"><button aria-label=\"Previous page\">\u2039</button><output aria-live=\"polite\">8 / 10</output><button aria-label=\"Next page\">\u203a</button></nav>"
+  },
+  {
+   "id": "section-label",
+   "group": "Structure",
+   "purpose": "Name the current section without competing with the title.",
+   "slots": [
+    "chrome"
+   ],
+   "sizes": [
+    "compact",
+    "standard"
+   ],
+   "contentLimits": "Two to four words.",
+   "accessibility": "Use a visible heading-level label in reading order.",
+   "className": "bil-section-label",
+   "html": "<p class=\"bil-section-label\">Methods</p>"
+  },
+  {
+   "id": "progress-cue",
+   "group": "Structure",
+   "purpose": "Show coarse progress through a sequence.",
+   "slots": [
+    "chrome",
+    "footer"
+   ],
+   "sizes": [
+    "compact",
+    "standard"
+   ],
+   "contentLimits": "Three to seven steps.",
+   "accessibility": "Pair the bar with a text label and current step.",
+   "className": "bil-progress-cue",
+   "html": "<div class=\"bil-progress-cue\" aria-label=\"Step 2 of 4\"><span style=\"--progress:50%\"></span><small>2 / 4</small></div>"
+  },
+  {
+   "id": "media-frame",
+   "group": "Media",
+   "purpose": "Frame one rounded-cropped figure with caption and credit; no visible outline.",
+   "slots": [
+    "media",
+    "main"
+   ],
+   "sizes": [
+    "standard",
+    "wide"
+   ],
+   "contentLimits": "One image; caption 90 characters; credit 80.",
+   "accessibility": "Require meaningful alt text and keep caption adjacent.",
+   "className": "bil-media-frame",
+   "html": "<figure class=\"bil-media-frame\"><div class=\"bil-media-placeholder\" role=\"img\" aria-label=\"Placeholder for study image\"></div><figcaption>Study image \u00b7 Credit: BIL</figcaption></figure>"
+  },
+  {
+   "id": "image-grid",
+   "group": "Media",
+   "purpose": "Arrange two to four related rounded-cropped images without visible outlines.",
+   "slots": [
+    "media",
+    "main"
+   ],
+   "sizes": [
+    "standard",
+    "wide"
+   ],
+   "contentLimits": "Two to four images; one short caption each.",
+   "accessibility": "Give every image distinct alt text and preserve source order.",
+   "className": "bil-image-grid",
+   "html": "<div class=\"bil-image-grid\"><span role=\"img\" aria-label=\"Image one\"></span><span role=\"img\" aria-label=\"Image two\"></span><span role=\"img\" aria-label=\"Image three\"></span></div>"
+  },
+  {
+   "id": "key-metric",
+   "group": "Media",
+   "purpose": "Emphasize one measured result with its unit.",
+   "slots": [
+    "main",
+    "side"
+   ],
+   "sizes": [
+    "standard",
+    "wide"
+   ],
+   "contentLimits": "One value; label 36 characters; qualifier 80.",
+   "accessibility": "Read value, unit, and qualifier as one group.",
+   "className": "bil-key-metric",
+   "html": "<div class=\"bil-key-metric\"><strong>84%</strong><span>signal retention</span><small>across 12 participants</small></div>"
+  },
+  {
+   "id": "comparison",
+   "group": "Media",
+   "purpose": "Compare two named states on one criterion.",
+   "slots": [
+    "main"
+   ],
+   "sizes": [
+    "standard",
+    "wide"
+   ],
+   "contentLimits": "Two items; one criterion; 40 characters per label.",
+   "accessibility": "Use headings and explicit values; do not rely on color.",
+   "className": "bil-comparison",
+   "html": "<div class=\"bil-comparison\"><div><h4>Baseline</h4><strong>42</strong><small>samples</small></div><div><h4>New method</h4><strong>68</strong><small>samples</small></div></div>"
+  },
+  {
+   "id": "process-sequence",
+   "group": "Media",
+   "purpose": "Explain a short ordered process.",
+   "slots": [
+    "main"
+   ],
+   "sizes": [
+    "standard",
+    "wide"
+   ],
+   "contentLimits": "Three to five steps; two lines per step.",
+   "accessibility": "Use an ordered list and visible step names.",
+   "className": "bil-process-sequence",
+   "html": "<ol class=\"bil-process-sequence\"><li><b>01</b><span>Collect</span></li><li><b>02</b><span>Interpret</span></li><li><b>03</b><span>Share</span></li></ol>"
+  },
+  {
+   "id": "card",
+   "group": "Structure",
+   "purpose": "Group one topic of slide content on a bounded surface.",
+   "slots": [
+    "main",
+    "side"
+   ],
+   "sizes": [
+    "compact",
+    "standard",
+    "wide"
+   ],
+   "contentLimits": "One title; body 90 characters.",
+   "accessibility": "The title is the accessible name; the rounded border is decorative.",
+   "className": "bil-card",
+   "html": "<div class=\"bil-card bil-card--accent\"><b class=\"bil-card__title\">Models</b><span class=\"bil-card__body\">Reasoning and generation</span></div>"
+  }
+ ]
+}
