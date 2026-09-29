@@ -27,8 +27,32 @@ class LiteratureEvidenceSynthesisTests(unittest.TestCase):
             "templates/evidence-brief.md",
             "templates/evidence-table.csv",
             "templates/claim-source-map.csv",
+            "templates/prisma-flow.md",
+            "templates/screening-log.csv",
         ):
             self.assertTrue((validate.ROOT / rel).exists(), rel)
+
+    def test_laya_screens_both_stages_without_human_confirmation(self):
+        text = validate.SKILL_MD.read_text(encoding="utf-8")
+        manifest = validate.check_manifest(text)
+        validate.check_screening(text, manifest)
+        screening = manifest["screening"]
+        self.assertEqual(screening["screener"], "Laya")
+        self.assertTrue(screening["required"])
+        self.assertEqual(sorted(screening["stages"]), ["full_text", "title_abstract"])
+        self.assertFalse(screening["human_confirmation_required"])
+
+    def test_screening_decision_record_is_required(self):
+        text = validate.SKILL_MD.read_text(encoding="utf-8")
+        for field in ("criterion_id", "supporting_span", "confidence"):
+            self.assertIn(field, text, field)
+        self.assertIn("uncalibrated", text.lower())
+
+    def test_screening_flow_is_a_deliverable(self):
+        text = validate.SKILL_MD.read_text(encoding="utf-8")
+        manifest = validate.check_manifest(text)
+        self.assertIn("screening flow", manifest["outputs"])
+        self.assertIn("screening flow", text.lower())
 
     def test_decision_grade_requires_independent_route(self):
         manifest = validate.check_manifest(validate.SKILL_MD.read_text(encoding="utf-8"))

@@ -10,10 +10,12 @@ import json
 import re
 import sys
 from pathlib import Path
+from typing import NoReturn
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL_MD = ROOT / "SKILL.md"
 MANIFEST = ROOT / "skill.json"
+SCREENING_REFERENCE = ROOT / "references" / "laya-screening.md"
 
 REQUIRED_SECTIONS = (
     "## When to Use",
@@ -31,7 +33,7 @@ BANNED = (
 )
 
 
-def fail(message: str) -> None:
+def fail(message: str) -> NoReturn:
     raise AssertionError(message)
 
 
@@ -132,13 +134,48 @@ def check_consensus(text: str, manifest: dict) -> None:
 
 
 def check_outputs(text: str, manifest: dict) -> None:
-    expected = {"evidence brief", "evidence table", "claim-to-source map"}
+    expected = {"evidence brief", "evidence table", "claim-to-source map", "screening flow"}
     if set(manifest["outputs"]) != expected:
         fail(f"skill.json outputs must be exactly {sorted(expected)}")
     lowered = text.lower()
     for name in expected:
         if name not in lowered:
             fail(f"SKILL.md does not name the {name!r} deliverable")
+
+
+def check_screening(text: str, manifest: dict) -> None:
+    screening = manifest.get("screening")
+    if not isinstance(screening, dict):
+        fail("skill.json must declare a screening block")
+    if screening.get("screener") != "Laya" or screening.get("required") is not True:
+        fail("Laya must be the required screener")
+    if sorted(screening.get("stages", [])) != ["full_text", "title_abstract"]:
+        fail("Laya must screen at both the title_abstract and full_text stages")
+    if screening.get("human_confirmation_required") is not False:
+        fail("screening.human_confirmation_required must be false: decisions stand without confirmation")
+    if not SCREENING_REFERENCE.exists():
+        fail("references/laya-screening.md is missing")
+    # The identity pin lives in the reference file only, so the version is
+    # stated once. SKILL.md names the screener and links the reference.
+    reference_text = SCREENING_REFERENCE.read_text(encoding="utf-8")
+    model = screening.get("model") or {}
+    for key in ("package", "version", "weights", "weights_revision"):
+        if not model.get(key):
+            fail(f"screening.model is missing {key!r}")
+        if model[key] not in reference_text:
+            fail(f"references/laya-screening.md must pin the model's {key!r}: {model[key]}")
+    if "Laya" not in text:
+        fail("SKILL.md must name Laya as the screener")
+    for field in ("criterion_id", "supporting_span", "confidence"):
+        if field not in text:
+            fail(f"SKILL.md must require the screening decision field {field!r}")
+    if "uncalibrated" not in text.lower():
+        fail("SKILL.md must state that the screening confidence is uncalibrated")
+    reference = "references/laya-screening.md"
+    if reference not in manifest.get("references", []):
+        fail("skill.json must list the Laya screening reference")
+    if f"`{reference}`" not in text:
+        fail("SKILL.md must link the Laya screening reference")
 
 
 def main() -> int:
@@ -150,10 +187,14 @@ def main() -> int:
         manifest = check_manifest(text)
         check_consensus(text, manifest)
         check_outputs(text, manifest)
+        check_screening(text, manifest)
     except AssertionError as exc:
         print(f"FAIL {ROOT.name}: {exc}")
         return 1
-    print(f"OK   {ROOT.name}: frontmatter, sections, links, Consensus requirement, deliverables")
+    print(
+        f"OK   {ROOT.name}: frontmatter, sections, links, Consensus requirement, "
+        "Laya screening at both stages, deliverables"
+    )
     return 0
 
 

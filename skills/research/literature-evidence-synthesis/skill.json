@@ -12,15 +12,39 @@
   "decision_grade_requires": [
     "independent search route beyond Consensus MCP",
     "frozen eligibility criteria before screening",
+    "sentinel regression and exclusion audit reported",
     "full-text source verification for every verified claim"
   ],
+  "screening": {
+    "screener": "Laya",
+    "required": true,
+    "stages": ["title_abstract", "full_text"],
+    "human_confirmation_required": false,
+    "model": {
+      "package": "laya",
+      "version": "0.3.21",
+      "weights": "convaiinnovations/laya",
+      "weights_revision": "55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851"
+    },
+    "decision_record_requires": [
+      "decision",
+      "criterion_id",
+      "supporting_span",
+      "confidence",
+      "model identity",
+      "input length and truncation state"
+    ],
+    "notes": "Decisions stand without human confirmation and every decision is logged with its criterion and supporting span. Confidence is uncalibrated and must be disclosed as such."
+  },
   "outputs": [
     "evidence brief",
     "evidence table",
-    "claim-to-source map"
+    "claim-to-source map",
+    "screening flow"
   ],
   "references": [
     "references/consensus-and-search-routes.md",
+    "references/laya-screening.md",
     "references/evidence-grading.md",
     "references/evaluation-comparability.md",
     "references/decision-grade-gates.md"
@@ -28,6 +52,8 @@
   "templates": [
     "templates/evidence-brief.md",
     "templates/evidence-table.csv",
-    "templates/claim-source-map.csv"
+    "templates/claim-source-map.csv",
+    "templates/prisma-flow.md",
+    "templates/screening-log.csv"
   ]
 }

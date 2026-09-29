@@ -121,6 +121,27 @@ class ResearchTopicReportTests(unittest.TestCase):
     def test_no_machine_local_paths(self):
         validate.check_no_machine_paths(validate.SKILL_MD.read_text(encoding="utf-8"))
 
+    def test_screening_flow_contract(self):
+        validate.check_flow_contract()
+        document = validate.check_offline_build()
+        self.assertIn("Count reconciliation", document)
+        self.assertIn('class="flow-box', document)
+
+    def test_unreconciled_flow_is_disclosed_not_silent(self):
+        builder = validate.load_builder()
+        data = json.loads(
+            (validate.ROOT / "templates" / "report-data.example.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        flow = [s for s in data["sections"] if s.get("kind") == "flow"][0]
+        flow["body"]["reconciliation"][0]["rhs"] = 999
+        warnings = builder.flow_warnings(data)
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("unique screened", warnings[0])
+        # A disclosed disagreement still renders; it is never silently edited away.
+        self.assertIn("FAIL", builder.build(data))
+
 
 if __name__ == "__main__":
     unittest.main()

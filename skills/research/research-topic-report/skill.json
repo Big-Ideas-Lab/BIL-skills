@@ -9,11 +9,13 @@
   "recommendation": false,
   "outputs": [
     "neutral hypothesis portfolio",
+    "screening flow",
     "self-contained HTML report"
   ],
   "report_sections": [
     "topic and scope",
     "evidence brief",
+    "screening flow",
     "evidence table",
     "claim-to-source map",
     "hypothesis register",

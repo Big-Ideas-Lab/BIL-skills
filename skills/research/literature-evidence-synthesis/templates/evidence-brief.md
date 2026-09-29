@@ -19,6 +19,21 @@
 | Consensus MCP | `<queries run, or the disclosed blocker>` |
 | Independent route(s) | `<route, query, date — decision-grade only>` |
 | Stopping rule | `<date cutoff, coverage, saturation, or budget>` |
+| Screener | Laya `<package version>` @ `<weights revision>` — title/abstract and full text |
+
+## Screening flow
+
+`<Counts from templates/prisma-flow.md; the diagram renders alongside.>` `<If any reconciliation rule fails, say so here rather than adjusting a number.>`
+
+| Stage | Count |
+|---|---|
+| unique screened | `<n>` |
+| excluded (title/abstract) | `<n>` |
+| sought for full text | `<n>` |
+| not retrieved | `<n>` |
+| included | `<n>` |
+| excluded (full text) | `<n>` |
+| awaiting full text | `<n>` |
 
 ## Findings
 

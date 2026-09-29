@@ -46,6 +46,98 @@
       ]
     },
     {
+      "id": "screening-flow",
+      "title": "Screening flow",
+      "kind": "flow",
+      "lead": [
+        "Every count below is read from the search ledger, the screening log, and the full-text assessments. The reconciliation rules are machine-checked; a review may not adjust a number to make a rule pass."
+      ],
+      "body": {
+        "stages": [
+          {
+            "label": "Records identified",
+            "count": 4210,
+            "routes": [
+              {"label": "Consensus MCP", "count": 2183},
+              {"label": "Independent route", "count": 2027}
+            ]
+          },
+          {
+            "label": "Duplicates removed",
+            "count": 1176,
+            "kind": "minus"
+          },
+          {
+            "label": "Unique records screened (title/abstract)",
+            "count": 3034,
+            "branch": {
+              "label": "Excluded at title/abstract",
+              "count": 2782,
+              "reasons": [
+                {"label": "E2 not CGM-only", "count": 1611},
+                {"label": "E4 no target task", "count": 902},
+                {"label": "E3 ineligible population or setting", "count": 189},
+                {"label": "E1 not a primary study", "count": 80}
+              ]
+            }
+          },
+          {
+            "label": "Reports sought for full text",
+            "count": 252,
+            "branch": {
+              "label": "Not retrieved",
+              "count": 124,
+              "reasons": [
+                {"label": "paywall or access denied", "count": 47},
+                {"label": "abstract only", "count": 40},
+                {"label": "no accessible full text", "count": 37}
+              ]
+            }
+          },
+          {
+            "label": "Reports assessed at full text",
+            "count": 128,
+            "branch": {
+              "label": "Excluded at full text",
+              "count": 95,
+              "reasons": [
+                {"label": "G3 implementation detail absent", "count": 41},
+                {"label": "G1 no valid split strategy", "count": 28},
+                {"label": "G4 non-transferable population", "count": 18},
+                {"label": "G2 target not isolated from context", "count": 8}
+              ]
+            }
+          },
+          {
+            "label": "Studies included in synthesis",
+            "count": 33,
+            "breakdown": [
+              {"label": "include_core", "count": 22},
+              {"label": "include_contrast", "count": 11}
+            ]
+          },
+          {
+            "label": "Awaiting full text (neither included nor excluded)",
+            "count": 124,
+            "kind": "hold"
+          }
+        ],
+        "reconciliation": [
+          {"rule": "unique screened = excluded + promoted + uncertain", "lhs": 3034, "rhs": 3034, "ok": true},
+          {"rule": "full text assessed + not retrieved = sought for full text", "lhs": 252, "rhs": 252, "ok": true},
+          {"rule": "included + excluded at full text = full text assessed", "lhs": 128, "rhs": 128, "ok": true},
+          {"rule": "exclusion reasons sum to their stage total", "lhs": 2782, "rhs": 2782, "ok": true}
+        ],
+        "attribution": [
+          {"label": "Screener", "value": "Laya"},
+          {"label": "Stages screened", "value": "title/abstract and full text"},
+          {"label": "Confirmation required", "value": "none — Laya decisions stand"},
+          {"label": "Sentinel regression", "value": "pass"},
+          {"label": "Calibration", "value": "uncalibrated; measured agreement disclosed in limitations"}
+        ]
+      }
+    },
+    {
       "id": "evidence-table",
       "title": "Evidence table",
       "kind": "prose",

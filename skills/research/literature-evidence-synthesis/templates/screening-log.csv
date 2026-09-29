@@ -1,0 +1,3 @@
+record_key,stage,decision,criterion_id,supporting_span,confidence,model,model_version,weights_revision,input_chars,truncated,notes
+<record_key>,title_abstract,<promote_full_text|exclude_title_abstract|uncertain_retrieve>,<I1|I2|I3|E1|E2|E3|E4|E5|U>,<verbatim span from title or abstract>,<0.00-1.00 uncalibrated>,laya,0.3.21,55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851,<chars>,<true|false>,<note or empty>
+<record_key>,full_text,<include_core|include_contrast|exclude_full_text|awaiting_full_text>,<G1|G2|G3|G4|other>,<verbatim span from full text>,<0.00-1.00 uncalibrated>,laya,0.3.21,55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851,<chars>,<true|false>,<note; include truncation warning when a gate verdict depended on omitted text>

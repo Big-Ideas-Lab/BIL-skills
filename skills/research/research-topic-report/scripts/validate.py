@@ -229,6 +229,48 @@ def load_builder():
     return module
 
 
+def check_flow_contract() -> None:
+    """The screening flow must render, reconcile, and attribute the screener."""
+    builder = load_builder()
+    data = json.loads(
+        (ROOT / "templates" / "report-data.example.json").read_text(encoding="utf-8")
+    )
+    flows = [s for s in data["sections"] if s.get("kind") == "flow"]
+    if not flows:
+        fail("the example report must include a screening flow section")
+    body = flows[0].get("body") or {}
+    stages = body.get("stages") or []
+    if not stages:
+        fail("the screening flow must declare stages")
+    for stage in stages:
+        branch = stage.get("branch")
+        if not branch:
+            continue
+        reasons = branch.get("reasons") or []
+        if reasons and sum(r["count"] for r in reasons) != branch["count"]:
+            fail(
+                f"flow stage {stage.get('label')!r}: exclusion reasons do not sum "
+                "to the branch count"
+            )
+    rules = {r["rule"]: r for r in body.get("reconciliation") or []}
+    for rule in builder.FLOW_REQUIRED_RULES:
+        if rule not in rules:
+            fail(f"the screening flow must reconcile {rule!r}")
+        entry = rules[rule]
+        if not entry.get("ok") or entry.get("lhs") != entry.get("rhs"):
+            fail(f"the example flow does not reconcile {rule!r}")
+    attribution = " ".join(str(a.get("value", "")) for a in body.get("attribution") or [])
+    for expected in ("Laya", "title/abstract and full text", "none"):
+        if expected not in attribution:
+            fail(f"the screening flow attribution must record {expected!r}")
+    document = builder.build(data)
+    for marker in ('class="flow-box', 'class="flow-branch"', 'class="flow-recon"'):
+        if marker not in document:
+            fail(f"the rendered screening flow is missing {marker!r}")
+    if builder.flow_warnings(data):
+        fail("the example report ships an unreconciled screening flow")
+
+
 def check_offline_build() -> str:
     builder = load_builder()
     data = json.loads((ROOT / "templates" / "report-data.example.json").read_text(encoding="utf-8"))
@@ -273,6 +315,7 @@ def main() -> int:
         check_tokens()
         check_html_has_no_slide_stage()
         check_card_grid_contract()
+        check_flow_contract()
         check_offline_build()
         check_offline_build_cli()
     except AssertionError as exc:
@@ -280,7 +323,7 @@ def main() -> int:
         return 1
     print(
         f"OK   {ROOT.name}: frontmatter, dependencies, neutrality, token parity, "
-        "offline build"
+        "screening flow, offline build"
     )
     return 0
 

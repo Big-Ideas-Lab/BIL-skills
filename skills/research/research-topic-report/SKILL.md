@@ -9,7 +9,7 @@ argument-hint: "Which research topic or direction needs a hypothesis portfolio r
 
 Turn a **defined research topic** into a neutral hypothesis-portfolio report: an offline, self-contained HTML artifact for group discussion. It orchestrates two component skills rather than reimplementing them:
 
-- `literature-evidence-synthesis` — evidence brief, evidence table, claim-to-source map.
+- `literature-evidence-synthesis` — evidence brief, screening flow (PRISMA-like), evidence table, claim-to-source map.
 - `hypothesis-assessment` — hypothesis register and risk–impact matrix.
 
 It then adds an internal **independent skeptic pass** and renders the report. Critique and revision are stages of this skill, not a separately invocable skill.
@@ -44,11 +44,11 @@ Also required: a configured Consensus MCP server (see `literature-evidence-synth
 ## Procedure
 
 1. **Fix the topic and scope.** Record the research direction, the question set, and the inferential boundary. Completion criterion: the topic is stated as input, with what is explicitly out of scope.
-2. **Run the literature stage.** Invoke `literature-evidence-synthesis` at the matching lane. Consensus MCP is required; decision-grade additionally requires an independent search route and full-text verification. If Consensus is unavailable, disclose it in the report rather than proceeding silently. Completion criterion: the three literature artifacts exist with provenance.
+2. **Run the literature stage.** Invoke `literature-evidence-synthesis` at the matching lane. Consensus MCP is required; decision-grade additionally requires an independent search route and full-text verification. If Consensus is unavailable, disclose it in the report rather than proceeding silently. Completion criterion: the four literature artifacts exist with provenance, with the screening flow reconciled.
 3. **Run the hypothesis stage.** Invoke `hypothesis-assessment` in `generate-then-assess` when no hypothesis set exists, otherwise `assess-supplied`. Produce the register and the four-axis matrix. Completion criterion: every hypothesis carries four ratings with rationale and no composite score.
 4. **Add explanation classes and gates** for shortlisted hypotheses at the lane's requirements — rival, null, artifact/confounding, falsifier, and minimum evidence. Completion criterion: every shortlisted hypothesis has all five where the lane requires them.
 5. **Run the internal skeptic pass.** Follow `references/skeptic-pass.md`: the critic starts from fresh context, stays blind to any preferred option, and reports dissent verbatim. Never let the critic silently rewrite the artifact. If only same-context critique is available, label it. Completion criterion: the skeptic section lists prioritized findings, with independence labeled honestly.
-6. **Assemble the report data** into the structure of `templates/report-data.example.json`. Every claim carries a source locator and a verification state; every hypothesis carries its matrix row. Completion criterion: no displayed claim lacks a source or a state.
+6. **Assemble the report data** into the structure of `templates/report-data.example.json`. Every claim carries a source locator and a verification state; every hypothesis carries its matrix row; the screening flow's counts are read from the search ledger, screening log, and full-text assessments rather than retyped from prose. Completion criterion: no displayed claim lacks a source or a state, and every flow stage reconciles.
 7. **Render the report** with `scripts/build_report.py`, which embeds the stylesheet and data so the output is one self-contained `.html` file with no network requests. See `references/offline-html-contract.md`. Completion criterion: the rendered file loads offline with no external references.
 8. **Verify the render visually.** Inspect the desktop and mobile widths side by side with `DESIGN.md`. Source inspection is not proof of visual quality. Completion criterion: the layout contract in `DESIGN.md` holds at both widths, or the gap is reported.
 9. **Report neutrally.** Confirm the artifact contains no recommendation, no composite score, and no unsupported claim. Completion criterion: an explicit neutrality check passes and the unresolved questions are visible.
@@ -58,6 +58,7 @@ Also required: a configured Consensus MCP server (see `literature-evidence-synth
 | Artifact | Source | Purpose |
 |---|---|---|
 | Neutral hypothesis portfolio (HTML) | `scripts/build_report.py` + report data | discussion artifact for the group |
+| Screening flow section (HTML) | `templates/report-data.example.json` (`kind: "flow"`) | PRISMA-like record of what was identified, excluded, and included — and why |
 | Report data (JSON) | `templates/report-data.example.json` | machine-readable input, re-renderable when evidence changes |
 | Evidence and hypothesis records | component skills | provenance behind every displayed claim |
 
@@ -71,6 +72,8 @@ Also required: a configured Consensus MCP server (see `literature-evidence-synth
 - Shipping a report that loads fonts, scripts, or images over the network, so it breaks offline.
 - Restyling the report into fixed 1920×1080 slide stages instead of a scrolling document.
 - Padding with prose. Omit any sentence that does not carry evidence, a trade-off, or an open question.
+- Adjusting an exclusion count so the screening flow reconciles. A count that does not reconcile is disclosed as `FAIL`, never edited to pass.
+- Hiding `awaiting_full_text` records by omitting them from the flow. A record that is neither included nor excluded stays countable in the diagram.
 
 ## Verification
 
@@ -78,7 +81,8 @@ Before delivering:
 
 - [ ] Topic and scope stated as fixed input, with exclusions.
 - [ ] Both component skills ran at the stated lane; Consensus disclosure is present if blocked.
-- [ ] Three literature artifacts, hypothesis register, and 4-axis matrix all present.
+- [ ] Four literature artifacts, hypothesis register, and 4-axis matrix all present.
+- [ ] Screening flow reconciles on all four rules, names each exclusion reason with its count, and attributes the screener and its version.
 - [ ] Every claim has a source locator and verification state; every hypothesis has a matrix row.
 - [ ] No recommendation and no composite score anywhere in the rendered report.
 - [ ] Falsifiers, minimum evidence, and rival/null/artifact explanations present where the lane requires.
